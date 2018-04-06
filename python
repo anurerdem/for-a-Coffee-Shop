@@ -1,0 +1,138 @@
+coffee_list = ["Espresso", "Cappuccino", "Americano", "Macchiato", "Mocha", "Filter", "Turkish"]
+price_list = [5.50, 7.75, 7.25, 9.50, 9.25, 5.75, 6]
+carp=1
+count=0
+cn=0 #müşteri sayısını hesaplamak için
+c_n=0 #kahve sayısını hesaplamak için
+m=0 #toplam gelir hesaplamak için
+while True:
+    print('X type instead of coffee type used to exit the program')
+    a=input('Which coffee do you want?:')
+    k=0
+    if a=="X" or "x":
+        print('our total customer is :',cn)
+        print('total coffee number:',c_n)
+        print('total income:',m)
+        break
+    else:
+        cof=a.lower()
+        d=a.title()
+    for i in range(len(coffee_list)-1):
+        if d == coffee_list[i]:
+            while k==0:
+                n=input('How many coffee you will get:')
+                if n.isdigit()!=True or n=="0":
+                    print ("invalid")
+                else:
+                    while True:
+                        b=int(n)
+                        c=input('What height do you have in your cups?(Tall,grande or venti):').lower()
+                        e=c.title()
+                        cn += 1
+                        if e == 'Tall':
+                            price=b*price_list[i]
+                            if cn%10==0:
+                                price=0*price
+                                print(price)
+                                print('Congratulations free of coffee.')
+                                #cn+=1
+                                c_n+=b
+                                m+=price
+                            else:
+                                if price>20:
+                                    print(b*price_list[i]*(90/100))
+                                    #cn+=1
+                                    c_n+=b
+                                    m+=price*(90/100)
+                                else:
+                                    print (b*price_list[i])
+                                    #cn+=1
+                                    c_n+=b
+                                    m+=price
+                        elif e=='Grande':
+                            price=b*price_list[i]
+                            price_g=b*(price_list[i]+1)
+                            if cn%10==0:
+                                price_g=0*price_g
+                                print(price_g)
+                                print('Congratulations free of coffee.')
+                                #cn+=1
+                                c_n+=b
+                                m+=price_g
+                            else:
+                                if price_g>20:
+                                    print (price_g*90/100)
+                                    #cn+=1
+                                    c_n+=b
+                                    m+=price_g*90/100
+                                else:
+                                    print(price_g)
+                                    #cn+=1
+                                    c_n+=b
+                                    m+=price_g
+                        elif e=='Venti' :
+                            price_v=b*(price_list[i]+1.5)
+                            if cn%10==0:
+                                price_v=0*price_v
+                                print(price_v)
+                                print('Congratulations free of coffee.')
+                                #cn+=1
+                                c_n+=b
+                                m+=price_v
+                            else: 
+                                if price_v>20:
+                                    print(price_v*(90/100))
+                                    #cn+=1
+                                    c_n+=b
+                                    m+=price_v*(90/100)
+
+                                else:
+                                    print(price_v)
+                                    #cn+=1
+                                    c_n+=b
+                                    m+=price_v
+                        break
+                    k = 1
+                     
+    #if d==coffee_list[6].lower():
+    if d==coffee_list[6]:
+        b=input('How many coffee you will get:')
+        if b.isdigit()!=True or b=="0":
+            print ("invalid")
+        else:
+            b =int(b)
+            if b<=0:
+                print('invalid value')
+            elif b==1:
+                if cn%10==0:
+                    price=0*price_list[6]
+                    print (price)
+                    print('Congratulations free of coffee.')
+                    cn+=1
+                    c_n+=1
+                    m+=price
+                else:
+                    print(price_list[6])
+                    cn+=1
+                    c_n+=1
+                    m+=price_list[6]
+            elif b>1:
+                count +=b
+                if cn%10==0:
+                    price=0*b*price_list[6]
+                    print(price)
+                    print('Congratulations free of coffee.')
+                    cn+=1
+                    c_n+=b
+                    m+=0 
+                else:
+                    if b*price_list[6]>20:
+                        print((b*price_list[6])*(90/100))
+                        cn+=1
+                        c_n+=b
+                        m+=b*price_list[6]*(90/100)
+                    else:
+                        print(b*price_list[6])
+                        cn+=1
+                        c_n+=b
+                        m+=b*price_list[6]
